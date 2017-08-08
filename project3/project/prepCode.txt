@@ -1,0 +1,254 @@
+NOTE: Getters and Setters are implied
+================================================================================
+================================================================================
+
+--------------------------------------------------------------------------------
+PREPCODE for the Client Class:
+--------------------------------------------------------------------------------
+
+DECLARE a String variable to hold the client's full name
+DECLARE an int variable to hold the length of the client's lawn
+DECLARE an int variable to hold the width of the client's lawn
+DECLARE an int variable to hold the number of payments the client will be making
+
+DECLARE an int constant to hold the number of weeks for the season
+DECLARE a double constant to hold the <400sqft per week season charge (Tier 1)
+DECLARE a double constant to hold the >=400 && <600sqft per week season charge (Tier 2)
+DECLARE a double constant to hold the >600sqft per week season charge (Tier 3)
+DECLARE a double constant to hold the single payment service charge (Choice 1)
+DECLARE a double constant to hold the two payment service charge (Choice 2)
+DECLARE a double constant to hold the twenty payment service charge (Choice 3)
+
+********************************************************************************
+DECLARE a method named calculateLawnSize() that will return an int
+		Calculates the total size of the clients lawn in sqft
+
+DECLARE a method named calculatePayment() that will return a double
+		Calculates the amount of each separate payment the client will be making each week
+
+DECLARE a method named calculateSeasonCost() that will return a double
+		Calculates the total amount the client has paid for the whole season
+********************************************************************************
+
+METHOD: int calculateLawnSize()
+
+		DECLARE local variable int for lawn size
+		
+		multiply client lawn width and client lawn length and store in lawn size
+		
+		RETURN lawn size
+		
+END METHOD
+		
+--------------------------------------------------------------------------------
+
+METHOD: double calculatePayment()
+	
+	DECLARE local variable double for payment
+	
+	IF	lawn size <400sqft
+		set payment to Tier 1
+	ELSE IF lawn size >=400sqft && <600sqft
+		set payment to Tier 2
+	ELSE IF lawn size >600sqft
+		set payment to Tier 3
+	END IF
+	
+	IF payment choice = choice 2
+		add choice 2 service charge to payment
+	ELSE IF payment choice = choice 3
+		add choice 3 service charge to payment
+	END IF
+	
+	RETURN payment
+	
+END METHOD
+
+--------------------------------------------------------------------------------
+
+METHOD: double calculateSeasonCost()
+	
+	DECLARE local variable double for season cost
+	
+	multiply payment by (convert to double)number of weeks in season and store in season cost
+	
+	RETURN season cost
+
+END METHOD
+
+================================================================================
+================================================================================
+
+--------------------------------------------------------------------------------
+PREPCODE for the MowingService Class:
+--------------------------------------------------------------------------------
+
+DECLARE an instance variable for the InputHelper object
+DECLARE an instance variable for an ArrayList that will hold Client objects
+
+********************************************************************************
+DECLARE a method named startUserPrompt() that will return nothing
+		Calls createNewClient() then asks if they would like to enter another client
+		If a client is created, it is added to the ArrayList of Clients
+		Process continues until the user indicates they no longer need to enter client information
+		
+DECLARE a method named createNewClient() that takes a Client as a parameter and will return nothing
+		Creates a new Client object and prompts the user for the new client's information
+		The information will be stored in the client object's instance variables
+
+DECLARE a method named calculateClientTotal() that will return an int
+		Calculates the total number of clients for the season
+
+DECLARE a method named calculateTotalSquareFeet() that will return an int
+		Calculates the total sqft mowed for the season
+
+DECLARE a method named calculateTotalRevenue() that will return a double
+		Calculates the total revenue made during the season
+		
+DECLARE a method named displayReports() that will return nothing
+		Formats and outputs each client's information to the console
+
+DECLARE a method named displaySummary() that will return nothing
+		Formats and ouptuts the season summary information to the console
+********************************************************************************
+
+METHOD: void startUserPrompt()
+
+	CREATE a new InputHelper object and assign it to the instance variable
+	CREATE a new ArrayList object and assign it to the instance variable
+	
+	LOOP if reply is not 'no'
+		CREATE a new client object and add it to the Clients ArrayList
+		CALL createNewClient() and pass in the new client object as the parameter
+		
+		ASK user if they would like to enter another client
+		
+	END LOOP
+	
+END METHOD
+
+--------------------------------------------------------------------------------
+
+METHOD: void createNewClient(Client client)
+	
+	DECLARE local String variable to hold the selected payment choice (a, b, or c)
+	
+	ASK user for client's full name, set client's name to their reply
+	ASK user for client's lawn length, set lawn length to their reply
+	ASK user for client's lawn width, set lawn width to their reply
+	ASK user for client's payment choice (Tier 1, 2, or 3), set payment choice to their reply
+	
+	LOOP if payment choice is empty
+	
+		SWITCH(payment choice)
+			CASE 'a':
+				set number of payments to Tier 1 rate
+				BREAK
+			CASE 'b':
+				set number of payments to Tier 2 rate
+				BREAK
+			CASE 'c':
+				set number of payments to Tier 3 rate
+				BREAK
+			DEFAULT:
+				retry input
+		END SWITCH
+		
+	END LOOP
+		
+	
+END METHOD
+
+--------------------------------------------------------------------------------
+
+METHOD: int calculateClientTotal()
+	
+	DECLARE local variable int for number of clients
+	
+	CALL the .size() method on the Clients ArrayList and set it to the number of clients
+	
+	RETURN number of clients
+	
+END METHOD
+
+--------------------------------------------------------------------------------
+
+METHOD: int calculateTotalSquareFeet()
+	
+	DECLARE local variable int for total square feet
+
+	LOOP through the clients ArrayList
+	
+		add each client's lawn size to the total square feet
+	
+	END LOOP
+	
+	RETURN total square feet
+
+END METHOD
+
+--------------------------------------------------------------------------------
+
+METHOD: double calculateTotalRevenue()
+
+	DECLARE local variable double for revenue
+	
+	LOOP through the clients ArrayList
+	
+		add each client's season cost to the total revenue variable
+		
+	END LOOP
+	
+	RETURN revenue
+
+END METHOD
+
+--------------------------------------------------------------------------------
+ 
+METHOD: void displayRetports()
+
+	LOOP through the clients ArrayList
+		PRINT the client's name
+		PRINT the client's lawn size
+		PRINT the client's number of payments
+		PRINT the client's amount of each payment
+		PRINT the client's season cost
+
+END METHOD
+
+--------------------------------------------------------------------------------
+
+METHOD: void displaySummary()
+
+	PRINT the total number of clients
+	PRINT the total number of square feet mowed
+	PRINT the total season revenue
+
+END METHOD
+
+================================================================================
+================================================================================
+
+--------------------------------------------------------------------------------
+PREPCODE for the MowingServiceLauncher Class:
+--------------------------------------------------------------------------------
+
+DECLARE an instance variable for the MowingService object
+
+********************************************************************************
+DECLARE a method named run() that returns nothing
+		Calls the methods needed to completely run the Mowing Service application
+********************************************************************************
+
+METHOD: void run()
+
+	CALL the startUserPrompt() method
+	CALL the displayReports() method
+	CALL the displaySummary() method
+
+END METHOD
+		
+================================================================================
+
+
+

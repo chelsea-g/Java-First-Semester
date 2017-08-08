@@ -1,0 +1,60 @@
+PREP CODE APP 2 GUESS GAME
+
+GuessGame Class:
+	
+	DECLARE an int to hold the answer to the guessing game
+	
+	----------------------------------------------------------------------------
+	DECLARE a method named generateAnswer() that has no parameters, returns 
+			nothing, and stores a pseudo random int to be used as the game's
+			answer.
+	----------------------------------------------------------------------------
+	
+		METHOD: void generateAnswer()
+			ANSWER = randomizingJavaMethod()
+		END METHOD
+		
+	----------------------------------------------------------------------------
+	DECLARE a method named displayResult() that outputs whether or not the guess 
+			was correct.
+	----------------------------------------------------------------------------
+	
+		METHOD: void displayResult()
+			IF validateGuess(guess) = true
+				OUTPUT You win
+			ELSE
+				OUTPUT Try again
+				promptForGuess()
+				
+	----------------------------------------------------------------------------	
+	DECLARE a method named validateGuess(guess) that has 1 parameter (guess), and 
+		returns a boolean based on whether or not the guess was correct
+	----------------------------------------------------------------------------	
+	
+		METHOD boolean validateGuess(String guess)
+			IF guess is equal to answer
+				RETURN true
+			ELSE
+				RETURN false
+			END METHOD
+				
+				
+				
+Guess Class:
+	
+	DECLARE a String to hold the guess from the user
+	DECLARE a boolean to hold the result of the guess
+	
+	----------------------------------------------------------------------------	
+	DECLARE a method named promptForGuess() that has no parameters, returns nothing,
+			and stores the user's guess in the guess variable
+	----------------------------------------------------------------------------	
+	
+		METHOD promptForGuess()
+			PROMPT user for a guess and convert it to an integer, store the guess into
+			the guess variable.
+		END METHOD
+			
+
+
+

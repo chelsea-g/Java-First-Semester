@@ -1,0 +1,11 @@
+1. MowingService Application Starts
+	A. A List is created to hold clients
+	
+2. Client entry begins. Repeat the following until the user wants to stop entering clients.
+	A. Prompt for the client's information
+	B. Create a Client object
+	C. Store the Client object in the clients List
+	
+3. MowingService Application Finishes
+	A. Output all client reports
+	B. Output season summary

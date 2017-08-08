@@ -1,0 +1,31 @@
+APP1 Classes
+
+	- Equation
+		This object will know the equations to calculate the outputs and the user's entered numbers
+		It will get the user's 2 numbers
+		
+	- Calculation
+		This object will know 
+		It will calculate the outputs
+		It will display the calculated outputs
+		
+APP2 Classes
+
+	- GuessGame
+		This object will know the game's answer
+		It will be able to create the answer and display whether or not the guess was correct
+		
+	- Guess 
+		This object will know the user's guess
+		It will get the user's guess through console input
+	
+APP3 Classes
+
+	- ColorQuote
+		This object will know the color passed by the user
+		It will get the user's color through console input
+		
+	- ColorValidation
+		This object will know the color-quote combinations
+		It will check the combo's for the entered color and return the location
+		of the quote in the array (if it exists)

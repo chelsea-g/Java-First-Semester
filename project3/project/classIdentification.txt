@@ -1,0 +1,23 @@
+MowingService Class Identification:
+
+Client - Holds information on a single client
+		 Calculates square feet of client's lawn
+		 Calculates the amount of each payment
+		 Calculates total of all payments
+		 
+MowingService - Holds all instances of the Client class
+				Prompts user for each new client's information
+				After client data entry complete:
+						Calculates total number of clients
+						Calculates total square feet of mowing
+						Calculates total revenue for the summer
+						Outputs client reports
+						Outputs season summary
+				
+InputHelper - Used to get input from the user through prompts.
+
+MowingServiceLauncher - Creates an instance of the MowingService class
+						Runs the MowingService application
+
+MowingServiceTestDrive - Includes main method
+						 Entry point to the Mowing Service Application
